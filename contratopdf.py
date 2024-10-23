@@ -11,7 +11,7 @@ def corrigir_texto(texto):
                   .replace("–", "-")
                   .replace("—", "-"))
 
-# Função para gerar o contrato
+# Função para gerar o contrato com base nos dados
 def gerar_contrato(dados, clausulas):
     contrato = f"""
     CONTRATADO: LOGA PUBLICIDADE E COMUNICAÇÃO LTDA, pessoa jurídica de direito privado, inscrita no CNPJ sob n 54.185.367/0001-56, neste ato representada por {dados['representante_contratada']}, {dados['nacionalidade_contratada']}, {dados['profissao_contratada']}, {dados['estado_civil_contratada']}, CPF {dados['cpf_contratada']}; estabelecida na {dados['endereco_contratada']}, endereço eletrônico {dados['email_contratada']}, fone: {dados['telefone_contratada']}, doravante denominada “CONTRATADA”;
@@ -65,28 +65,33 @@ def gerar_contrato(dados, clausulas):
     E, assim por estarem justos e contratados, firmam o presente instrumento, em 2 vias de igual forma e teor, na presença de 2 (duas) testemunhas, abaixo assinadas.
     """
 
-    # Corrigindo caracteres especiais para latin-1
+    # Aplica a função de correção de caracteres especiais
     contrato = corrigir_texto(contrato)
     
     return contrato
 
-# Função para gerar PDF
+# Função para gerar o PDF com margens ajustadas e centralizar a logo
 def gerar_pdf(contrato_texto, logo_path=None):
     pdf = FPDF()
+    pdf.set_margins(10, 10, 10)  # Define as margens: esquerda, topo, direita (10 mm de cada lado)
     pdf.add_page()
     
-    # Inserir logo se disponível
+    # Se a logo for fornecida, centraliza ela
     if logo_path:
-        pdf.image(logo_path, 10, 8, 33)  # Define o tamanho e posição da imagem (ajuste conforme necessário)
-        pdf.ln(40)  # Pula linhas após inserir a logo
+        # Definir tamanho da imagem
+        logo_width = 60  # Largura da imagem
+        page_width = pdf.w - 20  # Largura da página com margens
+        x_position = (page_width - logo_width) / 2  # Calcula a posição para centralizar a imagem
+        pdf.image(logo_path, x=x_position, y=10, w=logo_width)  # Adiciona a imagem na posição calculada
+        pdf.ln(50)  # Pula linhas para dar espaço após a logo
     
     pdf.set_font("Arial", size=12)
 
-    # Dividir o texto em linhas para evitar quebra automática
+    # Divide o texto do contrato em linhas e adiciona cada linha ao PDF
     for linha in contrato_texto.split('\n'):
-        pdf.cell(200, 10, txt=linha.encode('latin-1', 'replace').decode('latin-1'), ln=True, align='L')
+        pdf.multi_cell(0, 10, txt=linha.encode('latin-1', 'replace').decode('latin-1'))
 
-    # Salvar o PDF em um arquivo temporário
+    # Salva o PDF gerado
     pdf_output = "contrato_gerado.pdf"
     pdf.output(pdf_output)
     return pdf_output
@@ -94,17 +99,17 @@ def gerar_pdf(contrato_texto, logo_path=None):
 # Interface do Streamlit
 st.title("Gerador de Contrato")
 
-# Opção para carregar a logo
+# Seção de upload para a logo
 logo = st.file_uploader("Escolha a imagem para o logo (PNG, JPG)", type=["png", "jpg", "jpeg"])
 
-# Se o usuário fizer upload de uma imagem, salvamos a logo temporariamente
+# Salva a logo temporariamente se o usuário fizer upload
 logo_path = None
 if logo:
-    image = Image.open(logo)
-    logo_path = "logo_temp.png"
-    image.save(logo_path)
+    image = Image.open(logo)  # Abre a imagem usando Pillow
+    logo_path = "logo_temp.png"  # Define um nome temporário para salvar a logo
+    image.save(logo_path)  # Salva a imagem temporária no diretório atual
 
-# Coletando os dados do contrato
+# Coleta de dados para o contrato
 st.header("Informações do Contrato")
 dados = {}
 dados['representante_contratada'] = st.text_input("Nome do Representante da Contratada")
@@ -138,7 +143,7 @@ dados['numero_parcelas'] = st.number_input("Número de Parcelas", min_value=1, s
 dados['valor_mes'] = st.number_input("Valor por Mês (R$)", min_value=0.0, step=100.0)
 dados['valor_extenso_mensal'] = st.text_input("Valor Mensal por Extenso")
 
-# Cláusulas opcionais com checkboxes
+# Cláusulas opcionais selecionáveis com checkboxes
 st.subheader("Cláusulas Opcionais")
 clausulas = {
     "Executar os serviços contratados com estrita observância dos prazos, especificações técnicas e instruções constantes deste instrumento, com a competência e diligência habituais e necessárias, visando assegurar o bom e eficaz desempenho das atividades relacionadas ao objeto deste instrumento;": st.checkbox("Incluir cláusula sobre execução de serviços"),
@@ -156,15 +161,15 @@ clausulas = {
     "Realizar a edição de 8 vídeos mensais em formato reels com duração de até 60 segundos, sendo 4 para o cliente 'Outside Home' e 4 para o cliente 'Arthen Empreendimentos'.": st.checkbox("Incluir cláusula sobre edição de vídeos")
 }
 
-# Gerar contrato ao clicar no botão
+# Botão para gerar o contrato
 if st.button("Gerar Contrato"):
-    contrato_gerado = gerar_contrato(dados, clausulas)
+    contrato_gerado = gerar_contrato(dados, clausulas)  # Gera o texto do contrato com base nos dados e cláusulas
     st.subheader("Contrato Gerado:")
-    st.text(contrato_gerado)
+    st.text(contrato_gerado)  # Exibe o contrato na interface do Streamlit
     
-    # Gerar PDF
+    # Gera o PDF e inclui a logo se ela for fornecida
     pdf_file_path = gerar_pdf(contrato_gerado, logo_path)
     
-    # Permitir o download do PDF
+    # Permite que o usuário faça o download do PDF gerado
     with open(pdf_file_path, "rb") as pdf_file:
         st.download_button(label="Baixar Contrato em PDF", data=pdf_file, file_name="contrato.pdf", mime="application/pdf")
