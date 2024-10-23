@@ -2,6 +2,9 @@ import streamlit as st
 from fpdf import FPDF
 from PIL import Image
 
+# Configuração da página para alterar o título e ícone da aba do navegador
+st.set_page_config(page_title="Gerador de Contratos LOGA", page_icon="📝")
+
 # Função para corrigir caracteres especiais
 def corrigir_texto(texto):
     return (texto.replace("“", '"')

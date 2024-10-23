@@ -2,6 +2,15 @@ import streamlit as st  # Importa a biblioteca Streamlit para a interface do usu
 from fpdf import FPDF   # Importa a biblioteca FPDF para geração de PDFs
 from PIL import Image   # Importa a biblioteca Pillow (PIL) para manipulação de imagens
 
+
+st.set_page_config(
+    page_title="Gerador de Contratos",  # Define o título da página
+    page_icon="📝",                     # Ícone da página (pode ser um emoji ou uma imagem)
+    layout="centered",                  # Define o layout como centralizado
+    initial_sidebar_state="expanded"    # Define que a barra lateral estará expandida por padrão
+)
+
+
 # Função para corrigir caracteres especiais que não são suportados pela codificação 'latin-1' no FPDF
 def corrigir_texto(texto):
     return (texto.replace("“", '"')  # Substitui aspas curvas por aspas retas
