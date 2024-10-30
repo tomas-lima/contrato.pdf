@@ -244,9 +244,82 @@ Parágrafo 6º - O paciente fica consciente de que, em alguns casos, não será 
             juros = st.text_input("Juros ao mês (%)")
 
             contract_text = f"""
+
+            CONTRATO DE PRESTAÇÃO DE SERVIÇOS ODONTOLÓGICOS – ENXERTO ÓSSEO
+
+            Nome do Paciente (CONTRATANTE): {user_data['name']}
+            CPF: {user_data['cpf']}
+            CEP: {user_data['cep']}
+            Endereço: {user_data['address']}
+
+            Nome da Clínica (CONTRATADA): ODONTOCOMPANY
+            Unidade: ABADIA DE GOIÁS
+            Endereço: AV COMERCIAL, QD 6 LT 5. CENTRO. 75345-959
+            Cirurgião Dentista Responsável: Mariana Silva Xavier
+            CRO/GO: 17928 \n
+            \n
+            
+        
+            Pelo presente contrato particular, o usuário a seguir signatário e qualificado acima, adiante denominado PACIENTE ou RESPONSÁVEL, vem contratar a prestação de serviços odontológicos da clínica também acima qualificada, neste ato denominada como CONTRATADA, estando ciente de que as particularidades de tratamento reger-se-ão mediante as seguintes condições:
+
+            I – Fase de Orientação: O paciente será, nesta fase, orientado a respeito do que são enxertos, das suas diversas técnicas, do tratamento, através de literatura, fotos, modelos e radiografias, bem como dos seus direitos e deveres como paciente. Nesta fase o paciente tomará ciência de que a integração e cicatrização do enxerto é dependente de múltiplos fatores que podem independer do controle do cirurgião ou do paciente, não havendo outra garantia da sua ocorrência, além da probabilidade estatística.
+
+            Parágrafo único – O paciente ficará esclarecido e ciente de que a natureza deste tratamento objetiva a recuperação óssea e que estética não será o objetivo do mesmo.
+
+            II – Fase de Planejamento: Nesta fase, o profissional odontólogo realizará todo o planejamento do tratamento do paciente, discernindo todas as técnicas que serão aplicadas no caso concreto, e todas as fases em que o paciente irá ser submetido, avaliando a complexidade de cada tratamento, dando uma estimativa do que irá ser realizado em cada consulta profissional.
+Parágrafo único: Esta fase ocorre após o pagamento da primeira parcela/entrada, e envolve nítido esforço intelectual e tempo do profissional odontólogo, que preparará todas as fases do tratamento mediante avaliação, e irá organizar todos os preparativos para um tratamento efetivo e resolutivo, que corresponderá a porcentagem de 15% do valor do tratamento. 
+
+            III – Fase cirúrgica: Colocação de enxerto ósseo assim distribuídos na região do(s) dente(s)_____________{dente}________________________________.
+
+            IV – Fase de preservação: A fase de preservação terá a seguinte duração:
+No primeiro mês: uma consulta semanal ou mensal, dependendo do caso.
+Nos 3 (três) meses seguintes: uma consulta mensal
+Parágrafo 1º - Na fase de preservação o paciente será orientado sobre a escovação e higiene e dos cuidados que deverá tomar para a preservação do enxerto.
+Parágrafo 2º - A fase de preservação é obrigatória, sendo que, a falta do paciente às consultas marcadas prejudicará definitivamente o prognóstico do enxerto.
+Parágrafo 3º - Em caso de não ocorrer a cicatrização e integração o cirurgião compromete-se a recolocar outro enxerto, quando as condições do tecido ósseo permitirem, cabendo ao paciente apenas o pagamento do novo enxerto e do material. O paciente está ciente de que a cicatrização e integração do enxerto é um fenômeno dependente de múltiplos fatores que podem independer do controle do cirurgião ou do paciente.
+Parágrafo 4º - O paciente compromete-se a comparecer às consultas marcadas, quantas forem, e a executar os exames solicitados para o bom andamento do tratamento e a permanecer sem o uso da prótese se necessário.
+Parágrafo 5º - Em caso de insucesso motivado pelo não cumprimento, por parte do paciente, das orientações dadas pelo cirurgião, ou por sua ausência as consultas marcadas, o cirurgião ficará isento de responsabilidade sobre o enxerto ósseo colocado. Nestes casos, a recolocação do enxerto ficará a critério do cirurgião dentista.
+Parágrafo 6º - O paciente fica consciente de que, em alguns casos, não será possível a recolocação do enxerto ósseo sendo neste caso proposto outro tipo de tratamento.
+
             V – Do pagamento:
             - Parcelado: R$ {valor_parcelado} (entrada de R$ {data_entrada}) e {parcelas} parcelas de R$ {valor_parcela} com vencimento em {vencimento_parcelas}.
             Em caso de atraso, será aplicada uma multa de mora de {multa_mora}% sobre o valor da parcela, acrescida de juros de {juros}% ao mês.
+
+            Parágrafo 2º - Em caso de medida judicial por inadimplência dos pagamentos supracitados, o (a) paciente se obriga ao pagamento de honorários advocatícios, acrescidos de custas e despesas processuais.
+
+            VI – Em caso de desistência por parte do paciente, o cirurgião resguarda o direito do ressarcimento das despesas de material e contratação de terceiros decorrentes do mesmo, até a data da desistência, além de uma multa rescisória de 10% a qual o paciente está ciente e de acordo com a mesma.  Será considerada desistência a falta em duas consultas consecutivas ou ausência maior de trinta dias sem aviso por escrito de parte do paciente.
+
+            VII – Se houver a desistência, a fase de planejamento correspondente a 15% (quinze por cento) do valor do contrato não será reembolsada, se já estiver sido concluída, tendo em vista que o profissional já terá realizado todo o trabalho acordado entre as partes e o tratamento do cliente já estará devidamente planejado.
+
+            VIII – Fica acordado entre as partes que a realização do tratamento irá ficar condicionada ao pagamento do valor integral de cada procedimento almejado, de acordo com a tabela da OdontoCompany vigente à época da assinatura do contrato, e não ao pagamento das parcelas.
+
+            VIII - Em caso de desistência por parte do paciente, fica definido o prazo de até 15 dias úteis para a devolução do valor a ser ressarcido do tratamento já pago.
+
+            Parágrafo 1° – Fica acordado que o CONTRATANTE poderá realizar o adiantamento das parcelas para que o tratamento seja realizado de forma mais célere/adiantado.
+
+            Parágrafo 2° – O CONTRATANTE irá realizar o pagamento das parcelas até que estas completem o valor do procedimento almejado, e só após completar o valor do procedimento o tratamento poderá ter inicio.
+
+            Parágrafo 3° – Em caso de mais de 1 (um) procedimento, caberá ao CONTRATADO realizar a divisão de valores do contrato para a obtenção ao direito à realização de cada procedimento e quais procedimentos serão realizados de forma primária utilizando os conhecimentos técnicos específicos na área e a necessidade do CONTRATANTE
+
+            IX– A responsabilidade do cirurgião dentista baseia-se nas regras do Código de Ética Odontológica e dos preceitos e conceitos publicados na literatura odontológica brasileira.
+
+            X – O paciente, neste ato, doa todo o material de diagnóstico e planejamento (radiografias, modelos, slides, exames complementares) trazido pelo mesmo ou obtido durante o tratamento o qual passa a ser propriedade e documento do cirurgião dentista, sendo que no final do tratamento, ou em caso de desistência ou impossibilidade técnica serão arquivados com o cirurgião dentista.
+
+            O paciente declara que todas as suas dúvidas a respeito do tratamento proposto foram sanadas satisfatoriamente, estando de pleno acordo com o mesmo e assina neste ato o presente contrato do qual recebeu uma cópia de igual teor.
+
+            As partes elegem o Fórum da Comarca de Anápolis/GO para dirimir quaisquer lides oriundas do presente contrato, renunciando expressamente a qualquer outro, ainda que mais favorável for.
+
+            DATA: ____________/______________/_____________
+
+            CIDADE:_____________________________________________
+
+            _____________________________		              ____________________________
+             Paciente (CONTRATANTE)                                 CLÍNICA (CONTRATADO)
+
+
+            _____________________________		              ____________________________
+                    Testemunha 1					              Testemunha 2
+            
             """
     
     st.subheader("Pré-visualização do Contrato")
