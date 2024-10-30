@@ -328,7 +328,7 @@ Parágrafo 6º - O paciente fica consciente de que, em alguns casos, não será 
     uploaded_logo = st.file_uploader("Faça o upload da logo", type=["png", "jpg", "jpeg"])
 
     # Define logo path based on user's input or use default
-    logo_image = uploaded_logo if uploaded_logo else 'C:/Users/tomas/OneDrive/Área de Trabalho/ContratoPDF/OdontoLogo.png'
+    logo_image = uploaded_logo if uploaded_logo else 'images/OdontoLogo.png'
     
     pdf_data = generate_pdf(contract_text, logo_image=logo_image)
     
