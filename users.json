@@ -1,0 +1,23 @@
+{
+    "admin_user": {
+        "password": "admin123",
+        "role": "admin",
+        "unidade": "Unidade Padrão",
+        "endereco": "Endereço não informado",
+        "cirurgiao_responsavel": "Responsável não informado"
+    },
+    "regular_user": {
+        "password": "user123",
+        "role": "user",
+        "unidade": "Unidade Padrão",
+        "endereco": "Endereço não informado",
+        "cirurgiao_responsavel": "Responsável não informado"
+    },
+    "abadiania": {
+        "password": "user123",
+        "role": "user",
+        "unidade": "Unidade Padrão",
+        "endereco": "Endereço não informado",
+        "cirurgiao_responsavel": "Responsável não informado"
+    }
+}
