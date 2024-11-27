@@ -163,9 +163,9 @@ def contrato_page():
 
     # Inicializando valores padrão no session_state para multa e juros
     if "default_multa" not in st.session_state:
-        st.session_state["default_multa"] = 5.0
+        st.session_state["default_multa"] = 2.0
     if "default_juros" not in st.session_state:
-        st.session_state["default_juros"] = 5.0
+        st.session_state["default_juros"] = 1.0
 
     # Sidebar para configurar multa e juros
     st.session_state["default_multa"] = st.sidebar.number_input(
